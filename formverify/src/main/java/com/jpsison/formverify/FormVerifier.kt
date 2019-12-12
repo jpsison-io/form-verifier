@@ -1,6 +1,6 @@
 package com.jpsison.formverify
 
-import TestOpen
+import com.jpsison.formverify.annotations.TestOpen
 import android.widget.EditText
 import com.google.android.material.textfield.TextInputLayout
 import com.jpsison.formverify.interfaces.IFieldVerify
