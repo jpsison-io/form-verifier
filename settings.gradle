@@ -1,0 +1,3 @@
+include ':app', ':form-verify'
+rootProject.name='Form Verifier'
+project(':form-verify').projectDir = new File('formverify')
