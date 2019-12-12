@@ -1,11 +1,13 @@
 package com.jpsison.formverify
 
+import TestOpen
 import android.widget.EditText
 import com.google.android.material.textfield.TextInputLayout
 import com.jpsison.formverify.interfaces.IFieldVerify
 import com.jpsison.formverify.verifiers.MatchVerify
 import java.lang.Exception
 
+@TestOpen
 class FormVerifier {
 
     val fields: MutableList<Pair<Int, List<IFieldVerify>>> = mutableListOf()
