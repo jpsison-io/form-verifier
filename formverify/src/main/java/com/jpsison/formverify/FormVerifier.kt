@@ -5,6 +5,7 @@ import android.widget.EditText
 import com.google.android.material.textfield.TextInputLayout
 import com.jpsison.formverify.interfaces.IFieldVerify
 import com.jpsison.formverify.verifiers.MatchVerify
+import com.jpsison.formverify.verifiers.RequiredVerify
 import java.lang.Exception
 
 @TestOpen
@@ -99,11 +100,17 @@ class FormVerifier {
     fun validate(mapSet: Map<Any, List<IFieldVerify>>? = null): Boolean {
         var valid = true
         for (map in (mapSet ?: map)) {
-            val field = map.value.firstOrNull {
+            var field = map.value.firstOrNull {
                 !isValid(it)
             }
             if (map.key is TextInputLayout) {
                 val textInputLayout = map.key as TextInputLayout
+                val isRequired = map.value.firstOrNull {
+                    it is RequiredVerify
+                } != null
+                if (getValue(textInputLayout.id).trim().isNullOrBlank() && !isRequired) {
+                    field = null
+                }
                 textInputLayout.error = field?.message
                 if (valid && field != null) {
                     valid = false

@@ -50,6 +50,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 .build()
         )
         .addField(
+            R.id.til_email_optional,
+            Verify.Builder()
+                .email()
+                .build()
+        )
+        .addField(
             R.id.til_password,
             Verify.Builder()
                 .required()
